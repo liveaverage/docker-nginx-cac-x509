@@ -1,0 +1,40 @@
+version: '3.9'
+services:
+  bootstrap:
+    image: registry1.dso.mil/ironbank/redhat/ubi/ubi8-minimal:latest
+    init: true
+    restart: always
+    hostname: bootstrap
+    volumes:
+        - ./scripts:/app
+        - ./ca:/ca
+    extra_hosts:
+        - 'bootstrap:172.20.0.2'
+        - 'nginx:172.20.0.3'
+    command: 'bash -xe /app/bootstrap.sh'
+    networks:
+      dockernet:
+        ipv4_address: 172.20.0.2
+  nginx:
+    image: quay.io/shifti/nplus-adc-ubi:r.24.2
+    hostname: nginx
+    depends_on:
+      - bootstrap
+    volumes:
+        - ./scripts:/app
+        - ./ca:/ca
+    networks:
+      dockernet:
+        ipv4_address: 172.20.0.3
+    ports:
+        - 80:80
+        - 443:443
+networks:
+ dockernet:
+  driver: bridge
+  ipam:
+   config:
+   - subnet: 172.20.0.0/16
+
+volumes:
+  bootstrap:
