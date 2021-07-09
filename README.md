@@ -35,3 +35,8 @@ curl --cert ./ca/clientcert/client.pem --key ./ca/clientcert/client.key --cacert
 ```
 
 > If you'd like to test client certificate authentication/verification in you browser you can import the generated `client.pfx` (within the `ca/clientcert` directory) into Chrome/[Firefox](https://support.globalsign.com/digital-certificates/digital-certificate-installation/install-client-digital-certificate-firefox-windows)/Safari. **The default passphrase associated with the generated `client.pfx` file is `changeme`** 
+
+
+# Additional Information
+
+- http://nginx.org/en/docs/http/ngx_http_ssl_module.html#ssl_verify_client
