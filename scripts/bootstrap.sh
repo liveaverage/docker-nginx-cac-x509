@@ -64,7 +64,7 @@ echo -e "${RED}You should receive response 400 - 'No Required SSL Certificate se
 echo -e "${RED}Quick test WITHOUT MUTUAL TLS (Returns 400):"
 echo -e "${NC}curl --cacert ./ca/ca-ex.pem --resolve ca.shifti.us:8443:127.0.0.1 https://ca.shifti.us:8443\n"
 echo -e "${GREEN}Quick test WITH MUTUAL TLS (Returns 200):"
-echo -e "${NC}curl --cert ./ca/clientcert/client.crt --key ./ca/clientcert/client.key --cacert ./ca/ca-ex.pem https://127.0.0.1:8443\n"
+echo -e "${NC}curl --cert ./ca/clientcert/client.pem --key ./ca/clientcert/client.key --cacert ./ca/ca-ex.pem --resolve ca.shifti.us:8443:127.0.0.1 https://ca.shifti.us:8443\n"
 
 echo -e "After testing rejection based on a missing client certificate, import the generated PKCS12 cert into your "
 
