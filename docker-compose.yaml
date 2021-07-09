@@ -23,18 +23,15 @@ services:
     volumes:
         - ./scripts:/app
         - ./ca:/ca
+        - ./nginx-conf.d:/etc/nginx/conf.d
     networks:
       dockernet:
         ipv4_address: 172.20.0.3
     ports:
-        - 80:80
-        - 443:443
+        - 8443:8443
 networks:
  dockernet:
   driver: bridge
   ipam:
    config:
    - subnet: 172.20.0.0/16
-
-volumes:
-  bootstrap:
