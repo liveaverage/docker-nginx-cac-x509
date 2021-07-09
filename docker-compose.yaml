@@ -1,17 +1,17 @@
 version: '3.9'
 services:
   bootstrap:
-    image: registry1.dso.mil/ironbank/redhat/ubi/ubi8-minimal:latest
+    image: registry1.dso.mil/ironbank/f5-networks/nginx-plus-software-adc:1.24.2
     init: true
     restart: always
     hostname: bootstrap
     volumes:
-        - ./scripts:/app
-        - ./ca:/ca
+        - ./scripts:/tmp/app
+        - ./ca:/tmp/ca
     extra_hosts:
         - 'bootstrap:172.20.0.2'
         - 'nginx:172.20.0.3'
-    command: 'bash -xe /app/bootstrap.sh'
+    command: 'bash -xe /tmp/app/bootstrap.sh'
     networks:
       dockernet:
         ipv4_address: 172.20.0.2
@@ -21,8 +21,8 @@ services:
     depends_on:
       - bootstrap
     volumes:
-        - ./scripts:/app
-        - ./ca:/ca
+        - ./scripts:/tmp/app
+        - ./ca:/tmp/ca
         - ./nginx-conf.d:/etc/nginx/conf.d
     networks:
       dockernet:

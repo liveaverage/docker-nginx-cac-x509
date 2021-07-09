@@ -1,10 +1,10 @@
 #! /bin/bash
 
-DIR=/ca
+DIR=/tmp/ca
 CDIR=${DIR}/clientcert
 
 mkdir -p ${CDIR}
-microdnf -y install openssl
+
 
 if [ ! -f ${CDIR}/client.pem ]; then
 
