@@ -1,4 +1,4 @@
-#! /bin/ash
+#! /bin/bash
 
 DIR=/ca
 CDIR=${DIR}/clientcert
