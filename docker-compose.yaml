@@ -16,7 +16,7 @@ services:
       dockernet:
         ipv4_address: 172.20.0.2
   nginx:
-    image: quay.io/shifti/nplus-adc-ubi:r.24.2
+    image: registry1.dso.mil/ironbank/f5-networks/nginx-plus-software-adc:1.24.2
     hostname: nginx
     depends_on:
       - bootstrap
