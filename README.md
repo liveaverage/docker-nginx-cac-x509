@@ -40,3 +40,4 @@ curl --cert ./ca/clientcert/client.pem --key ./ca/clientcert/client.key --cacert
 # Additional Information
 
 - http://nginx.org/en/docs/http/ngx_http_ssl_module.html#ssl_verify_client
+- https://support.f5.com/csp/article/K18050039
